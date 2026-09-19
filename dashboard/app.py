@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from pathlib import Path
 
 
 # ============================================================
@@ -489,8 +490,12 @@ st.markdown(
 
 @st.cache_data
 def load_historical_data():
+    
+    BASE_DIR = Path(__file__).resolve().parent
 
-    file_path = "foresight_inventory_predictions.csv"
+    file_path = BASE_DIR / "foresight_inventory_predictions.csv"
+
+   
 
     df = pd.read_csv(file_path)
 
@@ -528,7 +533,8 @@ def load_historical_data():
 @st.cache_data
 def load_future_data():
 
-    file_path = "foresight_final_forecast_inventory.csv"
+    BASE_DIR = Path(__file__).resolve().parent
+    file_path = BASE_DIR / "foresight_final_forecast_inventory.csv"
 
     df = pd.read_csv(file_path)
 
@@ -578,9 +584,8 @@ except FileNotFoundError:
         "❌ foresight_inventory_predictions.csv was not found."
     )
 
-    st.info(
-        "Place the historical CSV inside D:\\FORESIGHT\\dashboard"
-    )
+    st.info("Historical forecast data file is missing from the dashboard folder.")
+    
 
     st.stop()
 
