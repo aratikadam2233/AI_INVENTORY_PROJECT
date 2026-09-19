@@ -44,3 +44,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+
+# FORESIGHT dashboard data
+!dashboard/foresight_inventory_predictions.csv
+!dashboard/foresight_final_forecast_inventory.csv
